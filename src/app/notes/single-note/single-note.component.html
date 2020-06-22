@@ -1,0 +1,24 @@
+
+<div class="card bg-warning" style="border:4px solid white;">
+    <div class="card-body" style="padding: 8px; margin-top: 8px;">
+        <div>
+            <!-- title -->
+            <input type="text" [(ngModel)]="note.title" class="input-label-lg" (change)="updateNote()"
+                maxlength="18" style="width: 80%" />
+            <a class="pull-right text-danger" (click)="deleteNote()">
+                <i class="fa fa-trash-o"></i>
+            </a>
+        </div>
+        <!-- text -->
+        <textarea class="input-label" style="width: 100%" rows="6" [(ngModel)]="note.text" (change)="updateNote()">
+                        </textarea>
+        <strong class="text-info" style="font-size: small">{{note.lastModifiedOn | date: 'MM-dd-yyy HH:mm'  }}</strong>
+    </div>
+</div>
+
+<div class="zippy">
+    <div (click)="toggle()">Toggle</div>
+    <div [hidden]="!visible">
+      <ng-content></ng-content>
+    </div>
+  </div>

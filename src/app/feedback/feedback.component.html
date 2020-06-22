@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-3"></div>
+    <div class="col-md-6">
+      <form name="useForm" [formGroup]="useForm" (ngSubmit)="sendFeedback()" class="feedback-form">
+        <!-- Name -->
+        <div class="form-group">
+          <label for="name">First Name</label>
+          <input type="text" id="name" #name class="form-control" name="name" placeholder="Your name" [(ngModel)]="model.name"
+            formControlName="name" [ngClass]="{'is-invalid': useForm.get('name').invalid && submitted}" />
+          <!-- input validation group --><span ng-show= name.touched >test validation</span>
+          <div *ngIf="submitted && useForm.get('name').errors" class="invalid-feedback">
+            <div>name is required</div>
+          </div>
+        </div>
+        
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" class="form-control" name="email" placeholder="Your email"
+            [(ngModel)]="model.email" formControlName="email" [ngClass]="{'is-invalid': useForm.get('email').invalid && submitted}" />
+          <!-- input validation group -->
+          <div *ngIf="submitted && useForm.get('email').errors" class="invalid-feedback">
+            <div>email is required</div>
+          </div>
+        </div>
+
+        <!-- Feedback -->
+        <div class="form-group">
+          <label for="feedback">Feedback</label>
+          <textarea id="feedback" class="form-control" name="feedback" placeholder="Your feedback" rows="10"
+            [(ngModel)]="model.feedback" formControlName="feedback"  [ngClass]="{'is-invalid': useForm.get('feedback').invalid && submitted}">
+          </textarea>
+          <div *ngIf="submitted && useForm.get('feedback').errors" class="invalid-feedback">
+            <div>feedback is required</div>
+          </div>
+          <!-- input validation group -->
+        </div>
+
+        <button type="submit" class="btn btn-info pull-right">
+          <i class="fa fa-envelope-o"></i>
+          <span> Send Feedback</span>
+        </button>
+      </form>
+    </div>
+    <div class="offset-3"></div>
+  </div>
+</div>
